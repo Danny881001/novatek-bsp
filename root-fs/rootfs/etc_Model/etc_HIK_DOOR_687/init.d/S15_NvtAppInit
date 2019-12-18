@@ -1,0 +1,15 @@
+#!/bin/sh
+# System Daemon Run
+echo "nvtapp" > /proc/nvt_info/bootts
+
+inetd
+
+crond
+
+#DeviceDiscovery -d &
+echo "nvtapp" > /proc/nvt_info/bootts
+
+# for ISP tool
+echo "run isp_demon"
+/usr/bin/isp_demon
+

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "K00 power off"
+

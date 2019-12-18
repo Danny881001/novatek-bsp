@@ -1,0 +1,18 @@
+#
+# NVT SOC drivers
+#
+menu "NVT SoC drivers"
+
+config NVT_PROFILER
+	bool "Novatek Profilers"
+	depends on ARCH_NVT_IVOT_V7
+	depends on ARM || ARM64
+	select KPROBES
+	select KRETPROBES
+	select EVENT_TRACING
+	select TRACING_SUPPORT
+	select FTRACE
+	select FUNCTION_TRACER
+	default y
+
+endmenu

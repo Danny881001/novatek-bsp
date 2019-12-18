@@ -1,0 +1,7 @@
+if MACH_NVT_NA51000
+
+config PINCTRL_NA51000
+	bool "Novatek NA51000 pin control"
+	depends on OF
+	default MACH_NVT_NA51000
+endif

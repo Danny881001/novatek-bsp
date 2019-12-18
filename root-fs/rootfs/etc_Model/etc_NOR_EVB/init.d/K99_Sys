@@ -1,0 +1,5 @@
+#!/bin/sh
+
+umount /mnt/sd
+echo "K99 power off end"
+

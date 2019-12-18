@@ -1,0 +1,146 @@
+#!/bin/sh
+
+# System Driver Init
+#modprobe ehci-hcd
+#modprobe xhci_plat_hcd
+#modprobe nvt_status
+#modprobe nvt_pstore
+#insmod /lib/modules/4.1.0/extra/crypto/cryptodev-linux/cryptodev.ko
+
+insmod /lib/modules/4.1.0/hdal/comm/frammap/frammap.ko
+insmod /lib/modules/4.1.0/hdal/comm/kwrap/kwrap.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_rpc/kdrv_rpc.ko
+#insmod /lib/modules/4.1.0/extra/msdcnvt/msdcnvt/msdcnvt.ko
+
+insmod /lib/modules/4.1.0/hdal/comm/pwm/nvt_pwm.ko
+insmod /lib/modules/4.1.0/hdal/comm/drv_sys/nvt_drv_sys_module.ko
+insmod /lib/modules/4.1.0/hdal/comm/ddr_arb/ddr_arb.ko
+insmod /lib/modules/4.1.0/hdal/comm/util/nvt_util.ko
+# isf framework
+insmod /lib/modules/4.1.0/hdal/kflow_common/nvtmpp/nvtmpp.ko ddr1_mpp_size=0x8000000
+insmod /lib/modules/4.1.0/hdal/kflow_common/isf_flow/kflow_isf.ko
+
+# videosprite
+insmod /lib/modules/4.1.0/hdal/kdrv_gfx2d/kdrv_grph/kdrv_grph.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_gfx2d/kdrv_hwcopy/kdrv_hwcpy.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_gfx2d/kdrv_ise/kdrv_ise.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_videoout/ide/nvt_ide.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_videoout/mi/nvt_mi.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_videoout/dsi/nvt_dsi.ko
+
+insmod /lib/modules/4.1.0/hdal/comm/sif/nvt_sif.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_videoout/tv/nvt_tv.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_videoout/display_obj/kdrv_videoout.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_videoout/hdmitx/nvt_hdmitx.ko
+insmod /lib/modules/4.1.0/hdal/display_panel/nvt_dispdev_panel.ko
+#insmod /lib/modules/4.1.0/hdal/display_panel/disp_ifpa_lcd1_wm08001_sn75lvds83b/nvt_dispdev_panel_wm08001_sn75lvds83b.ko
+insmod /lib/modules/4.1.0/hdal/display_panel/disp_if8b_lcd1_pw35p00_hx8238d/nvt_dispdev_panel_pw35p00.ko
+#insmod /lib/modules/4.1.0/hdal/display_panel/disp_if8b_lcd1_aucn01/nvt_dispdev_panel_aucn01.ko
+#insmod /lib/modules/4.1.0/hdal/display_panel/disp_ifdsi_lcd1_nt35510/nvt_dispdev_panel_nt35510.ko
+#insmod /lib/modules/4.1.0/hdal/display_panel/disp_ifmi_lcd1_nt75761/nvt_dispdev_panel_nt75761.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_videoprocess/kdrv_ime/kdrv_ime.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_gfx2d/kdrv_rotation/kdrv_rotation.ko
+#insmod /lib/modules/4.1.0/extra/imgtrans/gximage/nvt_gximage.ko
+insmod /lib/modules/4.1.0/hdal/kflow_common/gximage/nvt_gximage.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_videocodec/coe/nvt_coe.ko
+#insmod /lib/modules/4.1.0/extra/stream/videosprite/nvt_videosprite.ko
+insmod /lib/modules/4.1.0/hdal/kflow_gfx/videosprite/nvt_videosprite.ko
+
+# gfx
+insmod /lib/modules/4.1.0/hdal/kdrv_gfx2d/kdrv_affine/affine_neon/kdrv_afn_neon.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_gfx2d/kdrv_affine/kdrv_afn.ko
+insmod /lib/modules/4.1.0/hdal/kflow_gfx/nvt_gfx.ko
+
+# isf vdoin
+insmod /lib/modules/4.1.0/hdal/kdrv_videocapture/ssenif/hal/nvt_ssenif.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_videocapture/ssenif/senphy/nvt_senphy.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_videocapture/ssenif/csi/nvt_csi.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_videocapture/ssenif/lvds/nvt_lvds.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_videocapture/ssenif/vx1/nvt_vx1.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_videocapture/kdrv_sie/kdrv_sie.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_videocapture/kdrv_tge/kdrv_tge.ko
+insmod /lib/modules/4.1.0/hdal/kflow_videocapture/ctl_sen/nvt_ctl_sen.ko
+insmod /lib/modules/4.1.0/hdal/kflow_videocapture/ctl_sie/kflow_ctl_sie.ko
+insmod /lib/modules/4.1.0/hdal/kflow_videocapture/unit/kflow_videocap.ko
+
+# isf vdoipp
+insmod /lib/modules/4.1.0/hdal/kdrv_videoprocess/kdrv_dce/kdrv_dce.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_videoprocess/kdrv_ife/kdrv_ife.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_videoprocess/kdrv_ife2/kdrv_ife2.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_videoprocess/kdrv_ipe/kdrv_ipe.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_videoprocess/kdrv_rhe/kdrv_rhe.ko
+insmod /lib/modules/4.1.0/hdal/kflow_videoprocess/ctl/kflow_ctl_ipp.ko
+insmod /lib/modules/4.1.0/hdal/kflow_videoprocess/unit/kflow_videoproc.ko
+insmod /lib/modules/4.1.0/hdal/kflow_videoout/unit/kflow_videoout.ko
+
+# nvt_jpg
+#insmod /lib/modules/4.1.0/extra/vcodec/jpeg/nvt_jpg.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_videocodec/jpeg/kdrv_jpg.ko
+
+# nvt_h26x
+#insmod /lib/modules/4.1.0/extra/vcodec/h26x/nvt_h26x.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_videocodec/kdrv_h26x.ko
+
+
+# isf vdoenc
+insmod /lib/modules/4.1.0/hdal/kflow_videoenc/unit/kflow_videoenc.ko
+
+# isf vdodec
+insmod /lib/modules/4.1.0/hdal/kflow_videodec/unit/kflow_videodec.ko
+
+# audio
+insmod /lib/modules/4.1.0/hdal/kdrv_audioio/eac/nvt_eac.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_audioio/dai/nvt_dai.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_audioio/audio_common/nvt_audio.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_audioio/kdrv_audio/nvt_kdrv_audio.ko
+insmod /lib/modules/4.1.0/hdal/kflow_audiocapture/unit/kflow_audiocap.ko
+insmod /lib/modules/4.1.0/hdal/kflow_audioout/unit/kflow_audioout.ko
+
+# isf audenc
+insmod /lib/modules/4.1.0/hdal/kflow_audioenc/unit/kflow_audioenc.ko
+
+# isf auddec
+insmod /lib/modules/4.1.0/hdal/kflow_audiodec/unit/kflow_audiodec.ko
+
+# iq, 3a
+insmod /lib/modules/4.1.0/hdal/isp/nvt_isp.ko
+insmod /lib/modules/4.1.0/hdal/ae/nvt_ae.ko
+insmod /lib/modules/4.1.0/hdal/awb/nvt_awb.ko
+insmod /lib/modules/4.1.0/hdal/af/nvt_af.ko
+insmod /lib/modules/4.1.0/hdal/dr/nvt_dr.ko
+insmod /lib/modules/4.1.0/hdal/iq/nvt_iq.ko
+
+# iq, 3a sample
+#insmod /lib/modules/4.1.0/hdal/samples/sample_nvt_ae.ko
+#insmod /lib/modules/4.1.0/hdal/samples/sample_nvt_af.ko
+#insmod /lib/modules/4.1.0/hdal/samples/sample_nvt_awb.ko
+#insmod /lib/modules/4.1.0/hdal/samples/sample_nvt_iq.ko
+
+# motor & sensor
+#insmod /lib/modules/4.1.0/hdal/mtr_an41908/nvt_mtr_an41908.ko mtr_cfg_path=/etc/motor/mtr_an41908.cfg
+insmod /lib/modules/4.1.0/hdal/sen_imx290/nvt_sen_imx290.ko
+insmod /lib/modules/4.1.0/hdal/sen_imx291/nvt_sen_imx291.ko
+insmod /lib/modules/4.1.0/hdal/sen_os02k10/nvt_sen_os02k10.ko
+insmod /lib/modules/4.1.0/hdal/sen_os05a10/nvt_sen_os05a10.ko
+insmod /lib/modules/4.1.0/hdal/sen_imx317/nvt_sen_imx317.ko
+#insmod /lib/modules/4.1.0/hdal/sen_os05a10/nvt_sen_os05a10.ko sen_cfg_path=/etc/sensor/sen_os05a10_dual.cfg
+#insmod /lib/modules/4.1.0/hdal/sen_imx290/nvt_sen_imx290.ko sen_cfg_path=/etc/sensor/sen_imx290.cfg
+#insmod /lib/modules/4.1.0/hdal/sen_imx291/nvt_sen_imx291.ko sen_cfg_path=/etc/sensor/sen_imx291.cfg
+
+# dsp
+insmod /lib/modules/4.1.0/hdal/kflow_rpc/nvt_ipc.ko
+insmod /lib/modules/4.1.0/hdal/dsp/nvt_dsp.ko
+
+#ive
+insmod /lib/modules/4.1.0/hdal/kdrv_ive/kdrv_ive.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_sde/kdrv_sde.ko
+
+#ai
+insmod /lib/modules/4.1.0/hdal/kdrv_ai/kdrv_ai.ko
+
+#fb
+insmod /lib/modules/4.1.0/kernel/drivers/video/fbdev/core/fb.ko
+insmod /lib/modules/4.1.0/kernel/drivers/video/fbdev/core/cfbcopyarea.ko
+insmod /lib/modules/4.1.0/kernel/drivers/video/fbdev/core/cfbfillrect.ko
+insmod /lib/modules/4.1.0/kernel/drivers/video/fbdev/core/cfbimgblt.ko
+insmod /lib/modules/4.1.0/hdal/kdrv_videoout/fbdev/nvt_fb.ko

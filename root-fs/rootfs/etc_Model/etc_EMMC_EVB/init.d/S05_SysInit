@@ -1,0 +1,19 @@
+#!/bin/sh
+
+device_node_create()
+{
+	mknod /dev/$1 c `cat /sys/class/$1/$1/dev | sed "s/:/\ /g"`
+}
+
+# Setup mdev
+echo "fs" > /proc/nvt_info/bootts
+echo "/sbin/mdev" > /proc/sys/kernel/hotplug
+mdev -s
+
+# Scan for without insert card
+if [ ! -f /tmp/.nvt_mounts ]; then
+	/etc/mdev-script/autosd.sh
+	rm -rf /tmp/.nvt_mounts;
+fi
+
+echo "fs" > /proc/nvt_info/bootts
